@@ -68,6 +68,7 @@ class Trix.Composition extends Trix.BasicObject
     endPosition = startPosition + 1
 
     @setSelection(endPosition)
+    document.dispatchEvent new CustomEvent("trix-block-insert", detail: { range: [startPosition, endPosition] }, bubbles: true)
     @notifyDelegateOfInsertionAtRange([startPosition, endPosition])
 
   insertLineBreak: ->
